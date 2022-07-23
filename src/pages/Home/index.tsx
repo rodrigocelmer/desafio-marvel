@@ -4,7 +4,7 @@ export default function App() {
   const videoEl = useRef(null);
 
   return (
-    <div className="App">
+    <div className='container'>
 
     </div>
   );
