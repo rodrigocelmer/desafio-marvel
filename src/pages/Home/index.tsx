@@ -1,11 +1,11 @@
-import Table from "../../components/Table";
-import DATA from '../../MockData/MOCK_DATA.json'
+import React, { useEffect, useRef } from "react";
 
-export default function Home(){
-    return(
-        <>
-            <h1>HOME</h1>
-            <Table heroes={DATA.filter((hero)=>hero.first_name)}/>
-        </>
-    )
+export default function App() {
+  const videoEl = useRef(null);
+
+  return (
+    <div className="App">
+
+    </div>
+  );
 }
