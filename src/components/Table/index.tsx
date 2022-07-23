@@ -8,7 +8,7 @@ import Paper from '@mui/material/Paper';
 import { Box, Button } from '@mui/material';
 
 type Hero = {
-  name: string
+  first_name: string
 }
 
 type TableProps = {
@@ -16,7 +16,7 @@ type TableProps = {
 }
 
 export default function SimpleTable(props: TableProps) {
-  const sortedHeroes = props.heroes.sort((a, b) => a.name.localeCompare(b.name))
+  const sortedHeroes = props.heroes.sort((a, b) => a.first_name.localeCompare(b.first_name))
   console.log(sortedHeroes)
 
   return (
@@ -25,7 +25,7 @@ export default function SimpleTable(props: TableProps) {
         <TableBody>
           {sortedHeroes.map((hero) => (
             <TableRow 
-              key={hero.name}
+              key={hero.first_name}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <Box sx={{
@@ -34,7 +34,7 @@ export default function SimpleTable(props: TableProps) {
                 alignItems: 'center',
                 flexDirection: 'column'
               }}>
-                <Button variant='text' sx={{width: '100%', color: 'black'}}>{hero.name}</Button>
+                <Button variant='text' sx={{width: '100%', color: 'black'}}>{hero.first_name}</Button>
               </Box>
             </TableRow>
           ))}
