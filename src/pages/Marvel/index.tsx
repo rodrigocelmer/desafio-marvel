@@ -21,14 +21,12 @@ export default function Home(){
         setSerachTerm(e.target.value)
     }
 
-    console.log(heroes)
-
     return(
         <>
             <Grid container spacing={2}>
                 <Grid item display='flex' alignItems='center' flexDirection='column' xs={6}>
                     <TextInput title="SEARCH" handleChange={handleChange} searchTerm={searchTerm}/>
-                    <Table heroes={heroes.filter((hero: any)=>hero.name)}/>
+                    <Table heroes={heroes.filter((hero: any)=>hero.name.toLowerCase().includes(searchTerm.toLowerCase()))}/>
                 </Grid>
                 <Grid item xs={6}>
                     <Box display='flex' alignItems='center' justifyContent='center' sx={{height: '80vh'}}>
