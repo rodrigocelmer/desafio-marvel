@@ -1,13 +1,13 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
-import CardHeroes from "./pages/CardHeroes";
+import Marvel from "./pages/Marvel";
 
 export default function Routers(){
     return(
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Home/>}/>
-                <Route path="/heroes" element={<CardHeroes/>}/>
+                <Route path="/marvel" element={<Marvel/>}/>
             </Routes>
         </BrowserRouter>
     )
