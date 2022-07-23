@@ -20,7 +20,7 @@ export default function CardImgMedia() {
           3-D Man
         </Typography>
         <Typography variant="body2" color="text.secondary">
-            Presente em 12 comics (listar alguns exemplos?)
+            Presente em 12 comics - API retorna - (listar alguns exemplos?)
         </Typography>
       </CardContent>
       <CardActions>
