@@ -31,13 +31,14 @@ type marvelReduxType = {
 }
 
 export default function Home(){
+    const [page, setPage] = useState<number>(2)
     const [searchTerm, setSerachTerm] = useState<string>('');
     const marvelRedux: marvelReduxType = useSelector(( { marvel }:State )=>marvel)
     const dispatch = useDispatch()
     const {getCharacters} = bindActionCreators(marvelActionCreators, dispatch)
 
     useEffect(() => {
-        getCharacters();    //\todo it's only fetching 100 characteres
+        getCharacters(page);    //\todo it's only fetching 100 characteres
     }, [])
     
     console.log(marvelRedux)
