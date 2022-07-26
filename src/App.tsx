@@ -4,9 +4,7 @@ import Routers from "./Routers";
 
 function App() {
   return (
-    // <Provider store={store}>
       <Routers/>
-    // </Provider>
   );
 }
 
