@@ -6,6 +6,7 @@ export default async function getCharacters() {
         const axiosResponse = await axios.get('https://gateway.marvel.com/v1/public/characters', {
         params: {
             ...createAuth(),
+            limit: 100
         }
         })
         return axiosResponse.data
