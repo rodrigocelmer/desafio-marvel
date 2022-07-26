@@ -52,7 +52,7 @@ export default function Home(){
     //     getCharacters()
     // }
     useEffect(() => {
-        getCharacters();
+        getCharacters();    //\todo it's only fetching 100 characteres
     }, [])
     //////
     
