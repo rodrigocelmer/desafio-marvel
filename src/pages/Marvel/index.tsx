@@ -8,6 +8,8 @@ import Table from "../../components/Table";
 import TextInput from "../../components/TextInput";
 import DATA from '../../MockData/MOCK_DATA.json'
 import { marvelActionCreators, State } from "../../store";
+import video from '../../assets/marvel.mp4';
+import './styles.css';
 
 type marvelReduxType = {
     attributionHTML: string;
@@ -49,20 +51,22 @@ export default function Home(){
     }
 
     return(
-        <>
-        <Grid>
-            <Grid container spacing={2} >
-                <Grid item display='flex' alignItems='center' flexDirection='column' xs={6}>
-                    <TextInput title="SEARCH" handleChange={handleChange} searchTerm={searchTerm}/>
+        <Grid container spacing={2} sx={{height:'100vh', width:'100%', display:'flex', alignItems:'center', justifyContent:'center', flexDirection:'row', gap:'50px'}}>   
+            <video autoPlay loop muted>
+            <source src={video} type="video/mp4" />
+            </video>
+            <Grid xs={4} display='flex' alignItems='center' flexDirection='column' height={'50vh'}>           
+                <TextInput title="Search" handleChange={handleChange} searchTerm={searchTerm}/>
+                <Grid item  sx={{width:'50%'}}>
                     <Table heroes={marvelRedux.data.results.filter((hero: any)=>hero.name.toLowerCase().includes(searchTerm.toLowerCase()))}/>
                 </Grid>
-                <Grid item xs={6}>
-                    <Box display='flex' alignItems='center' justifyContent='center' sx={{height: '80vh'}}>
-                        <CardImgMedia/>
-                    </Box>
-                </Grid>
+            </Grid> 
+            
+            <Grid item xs={6}>
+                <Box display='flex' alignItems='center' justifyContent='center' sx={{height: '80vh', width:'100%'}}>
+                    <CardImgMedia/>
+                </Box>
             </Grid>
         </Grid>
-        </>
     )
 }

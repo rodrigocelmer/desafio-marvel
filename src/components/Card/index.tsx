@@ -8,14 +8,15 @@ import Typography from '@mui/material/Typography';
 
 export default function CardImgMedia() {
   return (
-    <Card sx={{ maxWidth: '50vh' }}>
+    <Card sx={{ width: '100%', display:'flex', alignItems:'center', justifyContent:'center', flexDirection:'column'}}>
       <CardMedia
         component="img"
         alt="3-D Man"
-        height="140"
+        height="560"
         image="http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784.jpg"
+        
       />
-      <CardContent>
+      <CardContent sx={{display:'flex', alignItems:'center', justifyContent:'center', flexDirection:'column'}}>
         <Typography gutterBottom variant="h5" component="div">
           3-D Man
         </Typography>

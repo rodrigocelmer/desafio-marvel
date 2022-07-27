@@ -20,7 +20,7 @@ export default function SimpleTable(props: TableProps) {
   console.log(sortedHeroes)
 
   return (
-    <TableContainer component={Paper} sx={{ maxHeight: '75vh' }} >
+    <TableContainer component={Paper} sx={{ maxHeight: '100vh' }} >
       <Table size="small">
         <TableBody>
           {sortedHeroes.map((hero) => (

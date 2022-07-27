@@ -3,7 +3,7 @@ import createAuth from './configs'
 
 export default async function getCharacters(page?: number) {
     try {   
-        const Limit = 100
+        const Limit = 10
         const Page = page ? page : 1
         const Offset = (Page - 1) * Limit
 
