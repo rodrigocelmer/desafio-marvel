@@ -31,7 +31,7 @@ type marvelReduxType = {
 }
 
 export default function Home(){
-    const [page, setPage] = useState<number>(2)
+    const [page, setPage] = useState<number>(1)
     const [searchTerm, setSerachTerm] = useState<string>('');
     const marvelRedux: marvelReduxType = useSelector(( { marvel }:State )=>marvel)
     const dispatch = useDispatch()
@@ -52,7 +52,10 @@ export default function Home(){
             <Grid container spacing={2}>
                 <Grid item display='flex' alignItems='center' flexDirection='column' xs={6}>
                     <TextInput title="SEARCH" handleChange={handleChange} searchTerm={searchTerm}/>
-                    <Table heroes={marvelRedux.data.results.filter((hero: any)=>hero.name.toLowerCase().includes(searchTerm.toLowerCase()))}/>
+                    <Table 
+                        heroes={marvelRedux.data.results.filter((hero: any)=>hero.name.toLowerCase().includes(searchTerm.toLowerCase()))}
+                        totalPages={marvelRedux.data.total} 
+                    />
                 </Grid>
                 <Grid item xs={6}>
                     <Box display='flex' alignItems='center' justifyContent='center' sx={{height: '80vh'}}>
