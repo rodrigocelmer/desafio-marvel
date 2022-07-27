@@ -1,4 +1,5 @@
 import { Box, Grid } from "@mui/material";
+import { color } from "@mui/system";
 import { bindActionCreators } from "@reduxjs/toolkit";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -49,7 +50,8 @@ export default function Home(){
 
     return(
         <>
-            <Grid container spacing={2}>
+        <Grid>
+            <Grid container spacing={2} >
                 <Grid item display='flex' alignItems='center' flexDirection='column' xs={6}>
                     <TextInput title="SEARCH" handleChange={handleChange} searchTerm={searchTerm}/>
                     <Table heroes={marvelRedux.data.results.filter((hero: any)=>hero.name.toLowerCase().includes(searchTerm.toLowerCase()))}/>
@@ -60,6 +62,7 @@ export default function Home(){
                     </Box>
                 </Grid>
             </Grid>
+        </Grid>
         </>
     )
 }
