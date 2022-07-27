@@ -20,15 +20,9 @@ export default function SimpleTable(props: TableProps) {
   const sortedHeroes = props.heroes.sort((a, b) => a.name.localeCompare(b.name))
 
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setRowsPerPage(+event.target.value);
-    setPage(0);
   };
 
   return (
@@ -61,7 +55,6 @@ export default function SimpleTable(props: TableProps) {
         rowsPerPage={100}
         page={page}
         onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
       />
   </>
   );
