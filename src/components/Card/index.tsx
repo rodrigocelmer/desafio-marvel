@@ -24,8 +24,8 @@ export default function CardImgMedia() {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Link para Comics - API retorna</Button>
-        <Button size="small">Link para Wiki - API retorna</Button>
+        <Button size="small">Comics</Button>
+        <Button size="small">Wiki</Button>
       </CardActions>
     </Card>
   );
