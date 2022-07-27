@@ -17,7 +17,7 @@ type TableProps = {
 }
 
 export default function SimpleTable(props: TableProps) {
-  const sortedHeroes = props.heroes.sort((a, b) => a.name.localeCompare(b.name))
+  const sortedHeroes = props.heroes?.sort((a, b) => a.name.localeCompare(b.name))
 
   const [page, setPage] = React.useState(0);
 
@@ -30,7 +30,7 @@ export default function SimpleTable(props: TableProps) {
       <TableContainer component={Paper} sx={{ maxHeight: '75vh' }} >
         <Table size="small">
           <TableBody>
-            {sortedHeroes.map((hero) => (
+            {sortedHeroes?.map((hero) => (
               <TableRow 
                 key={hero.name}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}

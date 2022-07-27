@@ -53,8 +53,8 @@ export default function Home(){
                 <Grid item display='flex' alignItems='center' flexDirection='column' xs={6}>
                     <TextInput title="SEARCH" handleChange={handleChange} searchTerm={searchTerm}/>
                     <Table 
-                        heroes={marvelRedux.data.results.filter((hero: any)=>hero.name.toLowerCase().includes(searchTerm.toLowerCase()))}
-                        totalPages={marvelRedux.data.total} 
+                        heroes={marvelRedux.data?.results.filter((hero: any)=>hero.name.toLowerCase().includes(searchTerm.toLowerCase()))}
+                        totalPages={marvelRedux.data?.total} 
                     />
                 </Grid>
                 <Grid item xs={6}>
