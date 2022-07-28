@@ -24,7 +24,7 @@ export default function SimpleTable(props: TableProps) {
 
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);
-    props.apiGetCharacter(page)
+    props.apiGetCharacter(newPage)
   };
 
   console.log(`Table page: ${page}`)
