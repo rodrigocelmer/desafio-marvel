@@ -9,25 +9,36 @@ import DATA from '../../MockData/MOCK_DATA.json'
 import { marvelActionCreators, State } from "../../store";
 
 type marvelReduxType = {
-    attributionHTML: string;
-    attributionText: string;
-    code: number;
-    copyright: string;
     data: {
         offset: number
         limit: number
         total: number
         count: number
         results: {
+            id: number
             name:string
             thumbnail: {
                 path: string,
                 extension: string
             }
+            comics: {
+                available: number
+            }
+            series: {
+                available: number
+            }
+            stories: {
+                available: number
+            }
+            events: {
+                available: number
+            }
+            urls: {
+                type: string,
+                url: string
+            }[]
         }[]
-    };
-    etag:  string;
-    status: string;
+    }
 }
 
 export default function Home(){
@@ -59,7 +70,13 @@ export default function Home(){
                 </Grid>
                 <Grid item xs={6}>
                     <Box display='flex' alignItems='center' justifyContent='center' sx={{height: '80vh'}}>
-                        <CardImgMedia/>
+                        <CardImgMedia 
+                            name={marvelRedux.data.results[0].name} 
+                            comics={0} 
+                            imgSrc={marvelRedux.data.results[0].thumbnail.path} 
+                            imgExt={marvelRedux.data.results[0].thumbnail.extension} 
+                            linkComics={marvelRedux.data.results[0].urls[2].url} 
+                            linkWiki={marvelRedux.data.results[0].urls[1].url}/>
                     </Box>
                 </Grid>
             </Grid>
