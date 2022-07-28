@@ -12,8 +12,9 @@ type Hero = {
 }
 
 type TableProps = {
+  apiGetCharacter: (page: number) => void;
   heroes: Array<Hero>,
-  totalPages: number
+  totalPages: number,
 }
 
 export default function SimpleTable(props: TableProps) {
@@ -23,7 +24,10 @@ export default function SimpleTable(props: TableProps) {
 
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);
+    props.apiGetCharacter(page)
   };
+
+  console.log(`Table page: ${page}`)
 
   return (
     <>

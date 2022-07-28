@@ -31,14 +31,13 @@ type marvelReduxType = {
 }
 
 export default function Home(){
-    const [page, setPage] = useState<number>(1)
     const [searchTerm, setSerachTerm] = useState<string>('');
     const marvelRedux: marvelReduxType = useSelector(( { marvel }:State )=>marvel)
     const dispatch = useDispatch()
     const {getCharacters} = bindActionCreators(marvelActionCreators, dispatch)
 
     useEffect(() => {
-        getCharacters(page);    //\todo it's only fetching 100 characteres
+        getCharacters(0);    //\todo it's only fetching 100 characteres
     }, [])
     
     console.log(marvelRedux)
@@ -55,6 +54,7 @@ export default function Home(){
                     <Table 
                         heroes={marvelRedux.data?.results.filter((hero: any)=>hero.name.toLowerCase().includes(searchTerm.toLowerCase()))}
                         totalPages={marvelRedux.data?.total} 
+                        apiGetCharacter={getCharacters}
                     />
                 </Grid>
                 <Grid item xs={6}>
