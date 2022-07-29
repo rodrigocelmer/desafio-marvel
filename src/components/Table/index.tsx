@@ -9,7 +9,7 @@ import { Box, Button, TablePagination } from '@mui/material';
 import './styles.css';
 
 type Hero = {
-  first_name: string
+  name: string
 }
 
 type TableProps = {
