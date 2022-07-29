@@ -27,11 +27,11 @@ export default function SimpleTable(props: TableProps) {
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);
     props.apiGetCharacter(newPage)
+    props.changeHeroCallback(0)
   };
 
-  function onBtnClick(){
-    // console.log(`Hero Index: ${heroIndex}`)
-    props.changeHeroCallback(0)
+  function onBtnClick(heroIndex: number){
+    props.changeHeroCallback(heroIndex)
   }
 
   return (
@@ -39,7 +39,7 @@ export default function SimpleTable(props: TableProps) {
       <TableContainer component={Paper} sx={{ maxHeight: '75vh' }} >
         <Table size="small">
           <TableBody>
-            {sortedHeroes?.map((hero) => (
+            {sortedHeroes?.map((hero, index) => (
               <TableRow 
                 key={hero.name}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -50,7 +50,7 @@ export default function SimpleTable(props: TableProps) {
                   alignItems: 'center',
                   flexDirection: 'column'
                 }}>
-                  <Button onClick={onBtnClick} variant='text' sx={{width: '100%', color: 'black'}}>{hero.name}</Button>
+                  <Button onClick={() => onBtnClick(index)} variant='text' sx={{width: '100%', color: 'black'}}>{hero.name}</Button>
                 </Box>
               </TableRow>
             ))}

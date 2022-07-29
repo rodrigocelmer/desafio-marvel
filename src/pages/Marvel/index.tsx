@@ -56,8 +56,6 @@ export default function Home(){
         setSerachTerm(e.target.value)
     }
 
-    console.log(marvelRedux.data?.results.indexOf('Abyss'))
-
     return(
         <>
             <Grid container spacing={2}>
