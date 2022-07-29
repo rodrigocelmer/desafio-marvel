@@ -13,8 +13,10 @@ type Hero = {
 
 type TableProps = {
   apiGetCharacter: (page: number) => void;
+  changeHeroCallback: (heroNumber: number) => void;
   heroes: Array<Hero>,
   totalPages: number,
+  heroIndex: number
 }
 
 export default function SimpleTable(props: TableProps) {
@@ -27,7 +29,10 @@ export default function SimpleTable(props: TableProps) {
     props.apiGetCharacter(newPage)
   };
 
-  console.log(`Table page: ${page}`)
+  function onBtnClick(){
+    // console.log(`Hero Index: ${heroIndex}`)
+    props.changeHeroCallback(0)
+  }
 
   return (
     <>
@@ -45,7 +50,7 @@ export default function SimpleTable(props: TableProps) {
                   alignItems: 'center',
                   flexDirection: 'column'
                 }}>
-                  <Button variant='text' sx={{width: '100%', color: 'black'}}>{hero.name}</Button>
+                  <Button onClick={onBtnClick} variant='text' sx={{width: '100%', color: 'black'}}>{hero.name}</Button>
                 </Box>
               </TableRow>
             ))}

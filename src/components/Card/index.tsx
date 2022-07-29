@@ -12,11 +12,30 @@ type CardHero = {
   comics: number,
   imgSrc: string,
   imgExt: string,
-  linkComics: string,
-  linkWiki: string
+  link1: {
+    type: string,
+    url: string
+  },
+  link2: {
+    type: string,
+    url: string
+  },
 }
 
 export default function CardImgMedia(props: CardHero) {
+  let linkComic = '';
+  let linkWiki = '';
+
+  if(props.link1?.type === 'wiki'){
+    linkWiki = props.link1?.url
+    linkComic = props.link2?.url
+  }
+  else{
+    linkWiki = props.link2?.url
+    linkComic = props.link1?.url
+  }
+  
+
   return (
     <Card sx={{ maxWidth: '50vh' }}>
       <CardMedia
@@ -35,12 +54,12 @@ export default function CardImgMedia(props: CardHero) {
       </CardContent>
       <CardActions>
         <Button size="small">
-          <Link underline="none" href={props.linkComics} target="_blank" rel="noreferrer" sx={{width: '100%'}}>
+          <Link underline="none" href={linkComic} target="_blank" rel="noreferrer" sx={{width: '100%'}}>
             COMICS
           </Link>
         </Button>
         <Button size="small">
-          <Link underline="none" href={props.linkWiki} target="_blank" rel="noreferrer" sx={{width: '100%'}}>
+          <Link underline="none" href={linkWiki} target="_blank" rel="noreferrer" sx={{width: '100%'}}>
             WIKI
           </Link>
         </Button>

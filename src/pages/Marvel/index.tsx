@@ -10,32 +10,32 @@ import { marvelActionCreators, State } from "../../store";
 
 type marvelReduxType = {
     data: {
-        offset: number
-        limit: number
-        total: number
-        count: number
+        offset: number,
+        limit: number,
+        total: number,
+        count: number,
         results: {
-            id: number
-            name:string
+            id: number,
+            name:string,
             thumbnail: {
                 path: string,
-                extension: string
-            }
+                extension: string,
+            },
             comics: {
-                available: number
-            }
+                available: number,
+            },
             series: {
-                available: number
-            }
+                available: number,
+            },
             stories: {
-                available: number
-            }
+                available: number,
+            },
             events: {
-                available: number
-            }
+                available: number,
+            },
             urls: {
                 type: string,
-                url: string
+                url: string,
             }[]
         }[]
     }
@@ -43,6 +43,7 @@ type marvelReduxType = {
 
 export default function Home(){
     const [searchTerm, setSerachTerm] = useState<string>('');
+    const [heroNumber, setHeroNumber] = useState<number>(1);
     const marvelRedux: marvelReduxType = useSelector(( { marvel }:State )=>marvel)
     const dispatch = useDispatch()
     const {getCharacters} = bindActionCreators(marvelActionCreators, dispatch)
@@ -50,12 +51,12 @@ export default function Home(){
     useEffect(() => {
         getCharacters(0);    //\todo it's only fetching 100 characteres
     }, [])
-    
-    console.log(marvelRedux)
 
     function handleChange(e:React.ChangeEvent<HTMLInputElement>): void{
         setSerachTerm(e.target.value)
     }
+
+    console.log(marvelRedux.data?.results.indexOf('Abyss'))
 
     return(
         <>
@@ -64,19 +65,21 @@ export default function Home(){
                     <TextInput title="SEARCH" handleChange={handleChange} searchTerm={searchTerm}/>
                     <Table 
                         heroes={marvelRedux.data?.results.filter((hero: any)=>hero.name.toLowerCase().includes(searchTerm.toLowerCase()))}
+                        heroIndex={0}
                         totalPages={marvelRedux.data?.total} 
                         apiGetCharacter={getCharacters}
+                        changeHeroCallback={setHeroNumber}
                     />
                 </Grid>
                 <Grid item xs={6}>
                     <Box display='flex' alignItems='center' justifyContent='center' sx={{height: '80vh'}}>
                         <CardImgMedia 
-                            name={marvelRedux.data.results[0].name} 
+                            name={marvelRedux.data.results[heroNumber].name} 
                             comics={0} 
-                            imgSrc={marvelRedux.data.results[0].thumbnail.path} 
-                            imgExt={marvelRedux.data.results[0].thumbnail.extension} 
-                            linkComics={marvelRedux.data.results[0].urls[2].url} 
-                            linkWiki={marvelRedux.data.results[0].urls[1].url}/>
+                            imgSrc={marvelRedux.data.results[heroNumber].thumbnail.path} 
+                            imgExt={marvelRedux.data.results[heroNumber].thumbnail.extension} 
+                            link1={marvelRedux.data.results[heroNumber].urls[1]} 
+                            link2={marvelRedux.data.results[heroNumber].urls[2]}/>
                     </Box>
                 </Grid>
             </Grid>
