@@ -55,10 +55,10 @@ export default function Home(){
             <video autoPlay loop muted>
             <source src={video} type="video/mp4" />
             </video>
-            <Grid xs={4} display='flex' alignItems='center' flexDirection='column' height={'50vh'}>           
+            <Grid item xs={4} display='flex' alignItems='center' flexDirection='column' height={'50vh'}>           
                 <TextInput title="Search" handleChange={handleChange} searchTerm={searchTerm}/>
                 <Grid item  sx={{width:'50%'}}>
-                    <Table heroes={marvelRedux.data.results.filter((hero: any)=>hero.name.toLowerCase().includes(searchTerm.toLowerCase()))}/>
+                    <Table heroes={marvelRedux?.data?.results?.filter((hero: any)=>hero?.name?.toLowerCase().includes(searchTerm.toLowerCase()))}/>
                 </Grid>
             </Grid> 
             

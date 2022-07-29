@@ -6,6 +6,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Box, Button } from '@mui/material';
+import './styles.css'
 
 type Hero = {
   name: string
@@ -16,14 +17,14 @@ type TableProps = {
 }
 
 export default function SimpleTable(props: TableProps) {
-  const sortedHeroes = props.heroes.sort((a, b) => a.name.localeCompare(b.name))
+  const sortedHeroes = props.heroes?.sort((a, b) => a.name.localeCompare(b.name))
   console.log(sortedHeroes)
 
   return (
     <TableContainer component={Paper} sx={{ maxHeight: '100vh' }} >
       <Table size="small">
         <TableBody>
-          {sortedHeroes.map((hero) => (
+          {sortedHeroes?.map((hero) => (
             <TableRow 
               key={hero.name}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -32,9 +33,10 @@ export default function SimpleTable(props: TableProps) {
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                flexDirection: 'column'
+                flexDirection: 'column',
+                opacity:'0.8'
               }}>
-                <Button variant='text' sx={{width: '100%', color: 'black'}}>{hero.name}</Button>
+                <Button variant='text' sx={{width: '100%', color: 'black', fontFamily:'myFirstFont'}}>{hero.name}</Button>
               </Box>
             </TableRow>
           ))}
