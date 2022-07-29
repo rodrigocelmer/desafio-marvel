@@ -43,7 +43,7 @@ type marvelReduxType = {
 
 export default function Home(){
     const [searchTerm, setSerachTerm] = useState<string>('');
-    const [heroNumber, setHeroNumber] = useState<number>(1);
+    const [heroNumber, setHeroNumber] = useState<number>(0);
     const marvelRedux: marvelReduxType = useSelector(( { marvel }:State )=>marvel)
     const dispatch = useDispatch()
     const {getCharacters} = bindActionCreators(marvelActionCreators, dispatch)
