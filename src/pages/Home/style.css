@@ -1,7 +1,11 @@
-import {marvel.}
 
 .container {
     height: 100vh;
     width: 100vw;
     background-image: url();
+    background-color: brown;
+}
+
+.grid {
+    background-color: brown;
 }

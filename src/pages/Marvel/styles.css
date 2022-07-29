@@ -1,0 +1,28 @@
+@font-face {
+  font-family: myFirstFont;
+  src: url(../../assets/roboto-condensed.bold.ttf)
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    
+  }
+
+  Button, Typography{
+    font-family: myFirstFont;
+  }
+  
+  
+  video {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+  }
+
+  TextInput {
+    background-color: #fff;
+  }

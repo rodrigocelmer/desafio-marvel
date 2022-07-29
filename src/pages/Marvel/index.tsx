@@ -1,4 +1,5 @@
 import { Box, Grid } from "@mui/material";
+import { color } from "@mui/system";
 import { bindActionCreators } from "@reduxjs/toolkit";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,6 +8,8 @@ import Table from "../../components/Table";
 import TextInput from "../../components/TextInput";
 import DATA from '../../MockData/MOCK_DATA.json'
 import { marvelActionCreators, State } from "../../store";
+import video from '../../assets/marvel.mp4';
+import './styles.css';
 
 type marvelReduxType = {
     data: {
@@ -58,15 +61,20 @@ export default function Home(){
 
     return(
         <>
-            <Grid container spacing={2}>
-                <Grid item display='flex' alignItems='center' flexDirection='column' xs={6}>
+            <Grid container spacing={2} sx={{height:'100vh', width:'100%', display:'flex', alignItems:'center', justifyContent:'center', flexDirection:'row', gap:'50px'}}>   
+                <video autoPlay loop muted>
+                <source src={video} type="video/mp4" />
+                </video>
+                <Grid item xs={4} display='flex' alignItems='center' flexDirection='column' height={'50vh'}>
                     <TextInput title="SEARCH" handleChange={handleChange} searchTerm={searchTerm}/>
-                    <Table 
-                        heroes={marvelRedux.data?.results.filter((hero: any)=>hero.name.toLowerCase().includes(searchTerm.toLowerCase()))}
-                        totalPages={marvelRedux.data?.total} 
-                        apiGetCharacter={getCharacters}
-                        changeHeroCallback={setHeroNumber}
-                    />
+                    <Grid item  sx={{width:'50%'}}>
+                        <Table 
+                            heroes={marvelRedux.data?.results.filter((hero: any)=>hero.name.toLowerCase().includes(searchTerm.toLowerCase()))}
+                            totalPages={marvelRedux.data?.total} 
+                            apiGetCharacter={getCharacters}
+                            changeHeroCallback={setHeroNumber}
+                        />
+                    </Grid>
                 </Grid>
                 <Grid item xs={6}>
                     <Box display='flex' alignItems='center' justifyContent='center' sx={{height: '80vh'}}>
@@ -79,7 +87,7 @@ export default function Home(){
                             link2={marvelRedux.data.results[heroNumber].urls[2]}/>
                     </Box>
                 </Grid>
-            </Grid>
+            </Grid> 
         </>
     )
 }
