@@ -63,7 +63,6 @@ export default function Home(){
                     <TextInput title="SEARCH" handleChange={handleChange} searchTerm={searchTerm}/>
                     <Table 
                         heroes={marvelRedux.data?.results.filter((hero: any)=>hero.name.toLowerCase().includes(searchTerm.toLowerCase()))}
-                        heroIndex={0}
                         totalPages={marvelRedux.data?.total} 
                         apiGetCharacter={getCharacters}
                         changeHeroCallback={setHeroNumber}

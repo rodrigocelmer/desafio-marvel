@@ -15,8 +15,7 @@ type TableProps = {
   apiGetCharacter: (page: number) => void;
   changeHeroCallback: (heroNumber: number) => void;
   heroes: Array<Hero>,
-  totalPages: number,
-  heroIndex: number
+  totalPages: number
 }
 
 export default function SimpleTable(props: TableProps) {
