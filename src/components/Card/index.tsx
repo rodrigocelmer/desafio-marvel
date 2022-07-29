@@ -5,27 +5,64 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import './styles.css'
+import { Link } from '@mui/material';
 
-export default function CardImgMedia() {
+type CardHero = {
+  name: string,
+  comics: number,
+  imgSrc: string,
+  imgExt: string,
+  link1: {
+    type: string,
+    url: string
+  },
+  link2: {
+    type: string,
+    url: string
+  },
+}
+
+export default function CardImgMedia(props: CardHero) {
+  let linkComic = '';
+  let linkWiki = '';
+
+  if(props.link1?.type === 'wiki'){
+    linkWiki = props.link1?.url
+    linkComic = props.link2?.url
+  }
+  else{
+    linkWiki = props.link2?.url
+    linkComic = props.link1?.url
+  }
+
   return (
-    <Card sx={{ maxWidth: '50vh' }}>
+    <Card sx={{ width: '100%', display:'flex', alignItems:'center', justifyContent:'center', flexDirection:'column', opacity:'0.93'}}>
       <CardMedia
         component="img"
-        alt="3-D Man"
-        height="140"
-        image="http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784.jpg"
+        alt={props.name}
+        height="460"
+        image={`${props.imgSrc}.${props.imgExt}`}
       />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          3-D Man
+      <CardContent sx={{display:'flex',fontFamily:'myFirstFont', alignItems:'center', justifyContent:'center', flexDirection:'column'}}>
+        <Typography sx={{fontFamily:'myFirstFont', fontSize:'26px'}} gutterBottom variant="h5" component="div">
+          {props.name}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography sx={{fontFamily:'myFirstFont', fontSize:'16px'}} variant="body2" color="text.secondary">
             Presente em 12 comics - API retorna - (listar alguns exemplos?)
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Link para Comics - API retorna</Button>
-        <Button size="small">Link para Wiki - API retorna</Button>
+        <Button sx={{fontFamily:'myFirstFont', color:'#000'}} size="small">
+          <Link underline="none" href={linkComic} target="_blank" rel="noreferrer" sx={{width: '100%'}}>
+            COMICS
+          </Link>
+        </Button>
+        <Button sx={{fontFamily:'myFirstFont', color:'#000'}} size="small">
+          <Link underline="none" href={linkWiki} target="_blank" rel="noreferrer" sx={{width: '100%'}}>
+            WIKI
+          </Link>
+        </Button>
       </CardActions>
     </Card>
   );

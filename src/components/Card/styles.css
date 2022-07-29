@@ -1,0 +1,8 @@
+@font-face {
+    font-family: myFirstFont;
+    src: url(../../assets/roboto-condensed.bold.ttf)
+  }
+  
+  Button, Typography{
+      font-family: myFirstFont;
+    }

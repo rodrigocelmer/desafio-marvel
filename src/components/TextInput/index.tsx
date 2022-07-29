@@ -13,7 +13,7 @@ export default function TextInput(props: TextInputProps){
             <TextField 
                 placeholder={props.title} 
                 variant="standard" 
-                sx={{marginY: '16px'}} 
+                sx={{marginY: '16px', backgroundColor: '#fff', borderRadius:'3px', color:'#000'}} 
                 onChange={props.handleChange}
                 />
         </>

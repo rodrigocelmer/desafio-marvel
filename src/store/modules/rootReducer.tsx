@@ -1,6 +1,9 @@
-import { combineReducers } from '@reduxjs/toolkit';
-import marvel from './marvel/marvelSlice'
+import { combineReducers } from "redux"
+import MarvelReducer from "./marvel/reducer"
 
-export default combineReducers({
-    marvel
+const reducers = combineReducers({
+    marvel: MarvelReducer
 })
+
+export default reducers
+export type State = ReturnType<typeof reducers>
