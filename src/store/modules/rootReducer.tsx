@@ -1,9 +1,9 @@
-import { combineReducers } from "redux"
-import MarvelReducer from "./marvel/reducer"
+import { combineReducers } from "redux";
+import marvel from "./marvel/marvelSlice";
 
 const reducers = combineReducers({
-    marvel: MarvelReducer
-})
+  marvel,
+});
 
-export default reducers
-export type State = ReturnType<typeof reducers>
+export default reducers;
+export type State = ReturnType<typeof reducers>;
