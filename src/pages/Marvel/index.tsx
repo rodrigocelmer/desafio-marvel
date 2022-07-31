@@ -48,11 +48,13 @@ export default function Home(){
     const [searchTerm, setSerachTerm] = useState<string>('');
     const [heroNumber, setHeroNumber] = useState<number>(0);
     const marvelRedux: marvelReduxType = useSelector(( { marvel }:State )=>marvel)
+    const marvelRedux2: marvelReduxType = useSelector(( { marvel2 }:State )=>marvel2)
     const dispatch = useDispatch()
     const {getCharacters, getCharacterById} = bindActionCreators(marvelActionCreators, dispatch)
 
     useEffect(() => {
         getCharacters(0);    //\todo it's only fetching 100 characteres
+        getCharacterById(1011334);  //3-D man
     }, [])
 
     function handleChange(e:React.ChangeEvent<HTMLInputElement>): void{
@@ -63,7 +65,7 @@ export default function Home(){
         getCharacterById(heroIndex);
         setHeroNumber(heroIndex);
         console.log("Marvel Reduxxx:")
-        console.log(marvelRedux);
+        console.log(marvelRedux2);
     }
 
     return(
@@ -86,12 +88,12 @@ export default function Home(){
                 <Grid item xs={6}>
                     <Box display='flex' alignItems='center' justifyContent='center' sx={{height: '80vh'}}>
                         <CardImgMedia 
-                            name={marvelRedux.data.results[0].name} 
+                            name={marvelRedux2.data?.results[0].name} 
                             comics={0} 
-                            imgSrc={marvelRedux.data.results[0].thumbnail.path} 
-                            imgExt={marvelRedux.data.results[0].thumbnail.extension} 
-                            link1={marvelRedux.data.results[0].urls[1]} 
-                            link2={marvelRedux.data.results[0].urls[2]}/>
+                            imgSrc={marvelRedux2.data?.results[0].thumbnail.path} 
+                            imgExt={marvelRedux2.data?.results[0].thumbnail.extension} 
+                            link1={marvelRedux2.data?.results[0].urls[1]} 
+                            link2={marvelRedux2.data?.results[0].urls[2]}/>
                     </Box>
                 </Grid>
             </Grid> 

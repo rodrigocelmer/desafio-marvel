@@ -8,4 +8,5 @@ interface IGetCharacterById {
     payload: string
 }
 
-export type Action = IGetCharacters | IGetCharacterById;
+export type Action = IGetCharacters;
+export type Action2 = IGetCharacterById;

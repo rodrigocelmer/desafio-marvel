@@ -1,5 +1,5 @@
 import { Dispatch } from "redux"
-import { Action } from "./actions"
+import { Action, Action2 } from "./actions"
 import {
     getCharacters as getCharactersApi,
     getCharacterById as getCharacterByIdApi
@@ -17,7 +17,7 @@ export const getCharacters = (page?: number)=>{
 }
 
 export const getCharacterById = (id?: number)=>{
-    return (dispatch:Dispatch<Action>)=>{
+    return (dispatch:Dispatch<Action2>)=>{
         getCharacterByIdApi(id).then((response:any)=>{
             dispatch({
                 type: "getCharacterById",
