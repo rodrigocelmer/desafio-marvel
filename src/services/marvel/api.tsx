@@ -1,7 +1,7 @@
 import axios from 'axios';
 import createAuth from './configs'
 
-export default async function getCharacters(page?: number) {
+export async function getCharacters(page?: number) {
     try {   
         const Limit = 100;
         const Page = page ? page : 0;
@@ -17,6 +17,20 @@ export default async function getCharacters(page?: number) {
         return axiosResponse.data
     } catch (error) {
         alert("ERROR - marvel.getCharacters()")
-     console.log(error);
+        console.log(error);
+    }
+}
+
+export async function getCharacterById(id?: number) {
+    try {   
+        const axiosResponse = await axios.get(`https://gateway.marvel.com/v1/public/characters/${id}`, {
+        params: {
+            ...createAuth()
+        }
+        })
+        return axiosResponse.data
+    } catch (error) {
+        // alert("ERROR - marvel.getCharacterById()")
+        console.log(error);
     }
 }

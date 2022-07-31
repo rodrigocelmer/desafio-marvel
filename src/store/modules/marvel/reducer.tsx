@@ -7,6 +7,8 @@ export default function reducer(state:object = initialState, action:Action) {
     switch (action.type) {
         case 'getCharacters':
             return action.payload
+        case 'getCharacterById':
+            return action.payload
         default:
             return state;
     }

@@ -3,4 +3,9 @@ interface IGetCharacters {
     payload: string
 }
 
-export type Action =  IGetCharacters
+interface IGetCharacterById {
+    type: 'getCharacterById',
+    payload: string
+}
+
+export type Action = IGetCharacters | IGetCharacterById;

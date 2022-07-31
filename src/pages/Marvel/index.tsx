@@ -49,7 +49,7 @@ export default function Home(){
     const [heroNumber, setHeroNumber] = useState<number>(0);
     const marvelRedux: marvelReduxType = useSelector(( { marvel }:State )=>marvel)
     const dispatch = useDispatch()
-    const {getCharacters} = bindActionCreators(marvelActionCreators, dispatch)
+    const {getCharacters, getCharacterById} = bindActionCreators(marvelActionCreators, dispatch)
 
     useEffect(() => {
         getCharacters(0);    //\todo it's only fetching 100 characteres
@@ -57,6 +57,13 @@ export default function Home(){
 
     function handleChange(e:React.ChangeEvent<HTMLInputElement>): void{
         setSerachTerm(e.target.value)
+    }
+
+    function handleHeroChoice(heroIndex: number){
+        getCharacterById(heroIndex);
+        setHeroNumber(heroIndex);
+        console.log("Marvel Reduxxx:")
+        console.log(marvelRedux);
     }
 
     return(
@@ -72,19 +79,19 @@ export default function Home(){
                             heroes={marvelRedux.data?.results.filter((hero: any)=>hero.name.toLowerCase().includes(searchTerm.toLowerCase()))}
                             totalPages={marvelRedux.data?.total} 
                             apiGetCharacter={getCharacters}
-                            changeHeroCallback={setHeroNumber}
+                            changeHeroCallback={handleHeroChoice}
                         />
                     </Grid>
                 </Grid>
                 <Grid item xs={6}>
                     <Box display='flex' alignItems='center' justifyContent='center' sx={{height: '80vh'}}>
                         <CardImgMedia 
-                            name={marvelRedux.data.results[heroNumber].name} 
+                            name={marvelRedux.data.results[0].name} 
                             comics={0} 
-                            imgSrc={marvelRedux.data.results[heroNumber].thumbnail.path} 
-                            imgExt={marvelRedux.data.results[heroNumber].thumbnail.extension} 
-                            link1={marvelRedux.data.results[heroNumber].urls[1]} 
-                            link2={marvelRedux.data.results[heroNumber].urls[2]}/>
+                            imgSrc={marvelRedux.data.results[0].thumbnail.path} 
+                            imgExt={marvelRedux.data.results[0].thumbnail.extension} 
+                            link1={marvelRedux.data.results[0].urls[1]} 
+                            link2={marvelRedux.data.results[0].urls[2]}/>
                     </Box>
                 </Grid>
             </Grid> 

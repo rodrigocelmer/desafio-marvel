@@ -9,7 +9,8 @@ import { Box, Button, TablePagination } from '@mui/material';
 import './styles.css';
 
 type Hero = {
-  name: string
+  name: string,
+  id: number
 }
 
 type TableProps = {
@@ -34,9 +35,11 @@ export default function SimpleTable(props: TableProps) {
     props.changeHeroCallback(heroIndex)
   }
 
+  console.log(sortedHeroes)
+
   return (
     <>
-      <TableContainer component={Paper} sx={{ maxHeight: '100vh' }} >
+      <TableContainer component={Paper} sx={{ maxHeight: '40vh' }} >
         <Table size="small">
           <TableBody>
             {sortedHeroes?.map((hero, index) => (
@@ -51,7 +54,7 @@ export default function SimpleTable(props: TableProps) {
                   flexDirection: 'column',
                   opacity:'0.8'
                 }}>
-                  <Button onClick={() => onBtnClick(index)} variant='text' sx={{width: '100%', color: 'black', fontFamily:'myFirstFont'}}>{hero.name}</Button>
+                  <Button onClick={() => onBtnClick(hero.id)} variant='text' sx={{width: '100%', color: 'black', fontFamily:'myFirstFont'}}>{hero.name}</Button>
                 </Box>
               </TableRow>
             ))}
