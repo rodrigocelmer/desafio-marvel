@@ -21,6 +21,10 @@ type CardHero = {
     type: string,
     url: string
   },
+  qtdComics: number,
+  qtdSeries: number,
+  qtdStories: number,
+  qtdEvents: number
 }
 
 export default function CardImgMedia(props: CardHero) {
@@ -49,7 +53,10 @@ export default function CardImgMedia(props: CardHero) {
           {props.name}
         </Typography>
         <Typography sx={{fontFamily:'myFirstFont', fontSize:'16px'}} variant="body2" color="text.secondary">
-            Presente em 12 comics - API retorna - (listar alguns exemplos?)
+            <p>COMICS: {props.qtdComics}</p>
+            <p>SERIES: {props.qtdSeries}</p>
+            <p>STORIES: {props.qtdStories}</p>
+            <p>EVENTS: {props.qtdEvents}</p>
         </Typography>
       </CardContent>
       <CardActions>

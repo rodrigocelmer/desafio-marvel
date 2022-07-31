@@ -93,7 +93,12 @@ export default function Home(){
                             imgSrc={marvelRedux2.data?.results[0].thumbnail.path} 
                             imgExt={marvelRedux2.data?.results[0].thumbnail.extension} 
                             link1={marvelRedux2.data?.results[0].urls[1]} 
-                            link2={marvelRedux2.data?.results[0].urls[2]}/>
+                            link2={marvelRedux2.data?.results[0].urls[2]}
+                            qtdComics={marvelRedux2.data?.results[0].comics.available}
+                            qtdSeries={marvelRedux2.data?.results[0].series.available}
+                            qtdStories={marvelRedux2.data?.results[0].stories.available}
+                            qtdEvents={marvelRedux2.data?.results[0].events.available}
+                            />
                     </Box>
                 </Grid>
             </Grid> 
