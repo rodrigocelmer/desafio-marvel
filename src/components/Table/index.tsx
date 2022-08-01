@@ -61,9 +61,9 @@ export default function SimpleTable(props: TableProps) {
           </TableBody>
         </Table>
       </TableContainer>
-      <TablePagination
+      <TablePagination sx={{color:'#fff', display:'flex' , justifyContent:'center'}}
         rowsPerPageOptions={[100]}
-        component="div"
+        component="p"
         count={props.totalPages}
         rowsPerPage={100}
         page={page}

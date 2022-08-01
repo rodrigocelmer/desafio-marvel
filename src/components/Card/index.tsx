@@ -41,14 +41,14 @@ export default function CardImgMedia(props: CardHero) {
   }
 
   return (
-    <Card sx={{ width: '100%', display:'flex', alignItems:'center', justifyContent:'center', flexDirection:'column', opacity:'0.93'}}>
-      <CardMedia
+    <Card sx={{ width: '100%', display:'flex', alignItems:'center', justifyContent:'center', flexDirection:'column', opacity:'0.93', height:'95vh'}}>
+      <CardMedia sx={{backgroundSize:'cover', backgroundRepeat:'no-repeat', backgroundImage:`url(${props.imgSrc}.${props.imgExt})`, height:'100%'}}
         component="img"
-        alt={props.name}
-        height="460"
-        image={`${props.imgSrc}.${props.imgExt}`}
+        // height='660'
+        // alt={props.name}
+        // image={`${props.imgSrc}.${props.imgExt}`}
       />
-      <CardContent sx={{display:'flex',fontFamily:'myFirstFont', alignItems:'center', justifyContent:'center', flexDirection:'column'}}>
+      <CardContent sx={{display:'flex',fontFamily:'myFirstFont', alignItems:'center', justifyContent:'center', flexDirection:'column', height:'30%'}}>
         <Typography sx={{fontFamily:'myFirstFont', fontSize:'26px'}} gutterBottom variant="h5" component="div">
           {props.name}
         </Typography>
@@ -59,7 +59,7 @@ export default function CardImgMedia(props: CardHero) {
             <p>EVENTS: {props.qtdEvents}</p>
         </Typography>
       </CardContent>
-      <CardActions>
+      <CardActions sx={{height:'5%'}}>
         <Button sx={{fontFamily:'myFirstFont', color:'#000'}} size="small">
           <Link underline="none" href={linkComic} target="_blank" rel="noreferrer" sx={{width: '100%'}}>
             COMICS

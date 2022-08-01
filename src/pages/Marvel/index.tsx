@@ -77,7 +77,7 @@ export default function Home(){
                 <Grid item xs={4} display='flex' alignItems='center' flexDirection='column' height={'50vh'}>
                     <TextInput title="SEARCH" handleChange={handleChange} searchTerm={searchTerm}/>
                     <Grid item  sx={{width:'50%'}}>
-                        <Table 
+                        <Table
                             heroes={marvelRedux.data?.results.filter((hero: any)=>hero.name.toLowerCase().includes(searchTerm.toLowerCase()))}
                             totalPages={marvelRedux.data?.total} 
                             apiGetCharacter={getCharacters}
